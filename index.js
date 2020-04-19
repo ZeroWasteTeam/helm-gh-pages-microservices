@@ -129,8 +129,8 @@ const PackageHelmCharts = async (chartsDir, destinationChartsDir) => {
   
     await exec.exec(
       `helm package`,
-      ['./helm' , '--destination', destinationChartsDir],
-      { cwd: './helm' }
+      ['./' , '--destination', destinationChartsDir],
+      { cwd: './' }
       );
   console.log('Packaged all helm charts.');
 }

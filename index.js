@@ -20,8 +20,7 @@ async function run() {
     const destinationRepo = core.getInput('destination-repo');
     const destinationBranch = core.getInput('destination-branch') ? core.getInput('destination-branch') : 'master';
     const destinationChartsDir = core.getInput('destination-charts-folder') ?core.getInput('destination-charts-folder') : 'charts';
-    //const releaseversion = core.getInput('releaseversion') ?core.getInput('releaseversion') : '1.9.9';
-    let releaseversion = '1.9.9'
+    const releaseversion = core.getInput('releaseversion') ?core.getInput('releaseversion') : '1.9.9';
     
     let useHelm3 = true;
     if (!core.getInput('helm-version')) {

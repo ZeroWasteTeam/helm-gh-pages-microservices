@@ -26,6 +26,10 @@ inputs:
     description: 'The version of Helm being used - either v2 or v3'
     required: false
     default: 'v3'
+  releaseversion:
+    description: 'The release version of apps'
+    required: false
+    default: ''   
 runs:
   using: 'node12'
   main: 'index.js'

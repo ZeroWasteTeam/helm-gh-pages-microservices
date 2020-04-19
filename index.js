@@ -130,7 +130,7 @@ const PackageHelmCharts = async (chartsDir, destinationChartsDir) => {
       `helm package .`,
       ['sourceRepo/helm'],
       { cwd: 'sourceRepo/helm' }
-   
+   );
   console.log('Packaged all helm charts.');
 }
 

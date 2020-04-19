@@ -20,7 +20,7 @@ async function run() {
     const destinationRepo = core.getInput('destination-repo');
     const destinationBranch = core.getInput('destination-branch') ? core.getInput('destination-branch') : 'master'
     const destinationChartsDir = core.getInput('destination-charts-folder') ?core.getInput('destination-charts-folder') : 'charts';
-    const version = core.getInput('releaseversion') ?core.getInput('releaseversion') : " ";
+    const releaseversion = core.getInput('releaseversion') ?core.getInput('releaseversion') : " ";
     
     let useHelm3 = true;
     if (!core.getInput('helm-version')) {
@@ -122,7 +122,7 @@ const PackageHelmCharts = async (chartsDir, destinationChartsDir) => {
   
     console.log(`Packaging helm chart in directory ${chartDirname}`);
     await exec.exec(
-      `helm package --version "1.2.2"`,
+      `helm package --version releaseversion`,
       [chartDirname , '--destination', destinationChartsDir],
       { cwd: chartsDir }
     );

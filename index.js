@@ -110,15 +110,15 @@ const PackageHelmCharts = async (chartsDir, destinationChartsDir) => {
 
   console.log('Charts dir content');
   await exec.exec(`ls`, ['-I ".*"'], { cwd: chartsDir });
-  /*for (const chartDirname of chartDirectories) {
+   for (const chartDirname of chartDirectories) {
 
     console.log(`Resolving helm chart dependency in directory ${chartDirname}`);
-    await exec.exec(
+  /*  await exec.exec(
       `helm dependency update`,
       [],
       { cwd: `${chartsDir}/${chartDirname}` }
-    );
-*/    
+    ); */
+  
     console.log(`Packaging helm chart in directory ${chartDirname}`);
     await exec.exec(
       `helm package`,

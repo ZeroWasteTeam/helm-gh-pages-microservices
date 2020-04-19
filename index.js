@@ -20,7 +20,7 @@ async function run() {
     const destinationRepo = core.getInput('destination-repo');
     const destinationBranch = core.getInput('destination-branch') ? core.getInput('destination-branch') : 'master';
     const destinationChartsDir = core.getInput('destination-charts-folder') ?core.getInput('destination-charts-folder') : 'charts';
-    const releaseversion = core.getInput('releaseversion') ?core.getInput('releaseversion') : '1.9.9';
+    const releaseversion = core.getInput('releaseversion') ?core.getInput('releaseversion') : '';
     
     let useHelm3 = true;
     if (!core.getInput('helm-version')) {
@@ -57,7 +57,7 @@ async function run() {
     await CloneGitRepo(sourceRepo, sourceBranch, accessToken, 'sourceRepo')
     await CloneGitRepo(destinationRepo, destinationBranch, accessToken, 'destinationRepo')
 
-    await PackageHelmCharts(`./sourceRepo/${sourceChartsDir}`, `../../destinationRepo/${destinationChartsDir}`)
+    await PackageHelmCharts(releaseversion,`./sourceRepo/${sourceChartsDir}`, `../../destinationRepo/${destinationChartsDir}`)
     await GenerateIndex()
     await AddCommitPushToGitRepo(`./destinationRepo`, `${github.context.sha}`, destinationBranch)
 
@@ -105,7 +105,7 @@ const CloneGitRepo = async (repoName, branchName, accessToken, cloneDirectory) =
 
 }
 
-const PackageHelmCharts = async (chartsDir, destinationChartsDir) => {
+const PackageHelmCharts = async (releaseversion, chartsDir, destinationChartsDir) => {
 
   const chartDirectories = getDirectories(path.resolve(chartsDir));
 

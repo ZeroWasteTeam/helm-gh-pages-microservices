@@ -119,7 +119,7 @@ const PackageHelmCharts = async (chartsDir, destinationChartsDir) => {
       [],
       { cwd: `${chartsDir}/${chartDirname}` }
     ); 
-  
+    console.log(`test ${releaseversion}`);
     console.log(`Packaging helm chart in directory ${chartDirname}`);
     await exec.exec(
       `helm package --version releaseversion`,

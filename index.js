@@ -127,8 +127,8 @@ const PackageHelmCharts = async (chartsDir, destinationChartsDir) => {
     );
   }*/
   await exec.exec(
-      `helm package .`,
-      ['sourceRepo/helm'],
+      `helm package .`
+    //  ['sourceRepo/helm']
    );
   console.log('Packaged all helm charts.');
 }
